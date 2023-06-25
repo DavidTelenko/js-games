@@ -7,7 +7,6 @@ class Board {
         this.size = size
         this.len = this.size * this.size
         this.data = new Int32Array(this.len)
-        this.init()
     }
 
     generateNew() {
@@ -24,39 +23,46 @@ class Board {
     }
 
     moveLeft() {
-
+        for (let x = 0; x < this.size; x++) {
+            for (let y = 1; y < this.size; y++) {
+                this.swap(x, y, x, y - 1)
+            }
+        }
     }
 
     moveRight() {
-
     }
 
     moveUp() {
-
     }
 
     moveDown() {
+    }
 
+    swap(x1, y1, x2, y2) {
+        const i1 = this.index(x1, y1)
+        const i2 = this.index(x2, y2)
+        const tmp = this.data[i1]
+        this.data[i1] = this.data[i2]
+        this.data[i2] = tmp
     }
 
     get(rowIndex, colIndex) {
         const index = this.index(rowIndex, colIndex)
-        return super[index]
+        return this.data[index]
     }
 
     set(rowIndex, colIndex, value) {
         const index = this.index(rowIndex, colIndex)
-        super[index] = value
+        this.data[index] = value
     }
 
     index(rowIndex, colIndex) {
-        // Make sure the row and column indices are valid
         if (rowIndex < 0 || rowIndex >= this.size ||
             colIndex < 0 || colIndex >= this.size) {
             throw new Error(`Invalid indices: (${rowIndex}, ${colIndex})`)
         }
 
-        // Calculate the one-dimensional index from the row and column indices
         return rowIndex * this.size + colIndex
     }
 
@@ -88,23 +94,59 @@ class HTMLBoardView {
         for (let i = 0; i < this.len; i++) {
             const id = i.toString()
             let cell = document.getElementById(id)
+
             if (data[i] == 0) {
+                cell.textContent = ""
+
+                if (cell.classList.length > 1) {
+                    cell.classList.remove(cell.classList.item(1))
+                }
+
                 continue
             }
+
             const value = Math.pow(2, data[i])
             cell.textContent = value.toString()
+
+            if (cell.classList.length > 1) {
+                cell.classList.replace(cell.classList.item(1), `num${value}`);
+                continue
+            }
+
             cell.classList.add(`num${value}`)
         }
     }
 }
 
-function initBoard() {
-    const board = document.querySelector(".board")
-    const size = 4
-    let boardView = new HTMLBoardView(board, size)
-    let boardModel = new Board(size)
+const board = document.querySelector(".board")
+const size = 4
+let boardView = new HTMLBoardView(board, size)
+let boardModel = new Board(size)
 
-    boardModel.update(boardView)
-}
+boardModel.init()
+boardModel.update(boardView)
 
-initBoard()
+document.addEventListener('keydown', function (event) {
+    switch (event.key) {
+        case "a":
+        case "ArrowLeft":
+            boardModel.moveLeft()
+            boardModel.update(boardView)
+            break
+        case "w":
+        case "ArrowUp":
+            boardModel.moveUp()
+            boardModel.update(boardView)
+            break
+        case "s":
+        case "ArrowDown":
+            boardModel.moveDown()
+            boardModel.update(boardView)
+            break
+        case "d":
+        case "ArrowRight":
+            boardModel.moveRight()
+            boardModel.update(boardView)
+            break
+    }
+});

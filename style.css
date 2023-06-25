@@ -16,12 +16,13 @@ body {
 /* Style the individual cells of the game board */
 .cell {
     font-family: Helvetica, sans-serif;
+    font-weight: bold;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 5px;
-    font-size: 40px;
+    font-size: 60px;
     border-radius: 10px;
     background-color: #cdc1b4;
 }
