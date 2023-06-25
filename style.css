@@ -1,0 +1,93 @@
+.board {
+    display: grid;
+    flex-wrap: wrap;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #bbada0;
+}
+
+/* Style the individual cells of the game board */
+.cell {
+    margin: 5px;
+    font-size: 40px;
+    text-align: center;
+    line-height: 100px;
+    border-radius: 10px;
+    background-color: #cdc1b4;
+}
+
+/* Style each cell with different colors based on the number value */
+.cell.num2 {
+    background-color: #eee4da;
+    color: #776e65;
+}
+
+.cell.num4 {
+    background-color: #ede0c8;
+    color: #776e65;
+}
+
+.cell.num8 {
+    background-color: #f2b179;
+    color: #f9f6f2;
+}
+
+.cell.num16 {
+    background-color: #f59563;
+    color: #f9f6f2;
+}
+
+.cell.num32 {
+    background-color: #f67c5f;
+    color: #f9f6f2;
+}
+
+.cell.num64 {
+    background-color: #f65e3b;
+    color: #f9f6f2;
+}
+
+.cell.num128 {
+    background-color: #edcf72;
+    color: #f9f6f2;
+}
+
+.cell.num256 {
+    background-color: #edcc61;
+    color: #f9f6f2;
+}
+
+.cell.num512 {
+    background-color: #edc850;
+    color: #f9f6f2;
+}
+
+.cell.num1024 {
+    background-color: #edc53f;
+    color: #f9f6f2;
+}
+
+.cell.num2048 {
+    background-color: #edc22e;
+    color: #f9f6f2;
+}
+
+/* Style the game title */
+.game-title {
+    font-size: 48px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: #776e65;
+}
+
+/* Style the game over message */
+.game-over {
+    font-size: 32px;
+    text-align: center;
+    margin-top: 40px;
+    color: #776e65;
+}
