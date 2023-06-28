@@ -1,0 +1,47 @@
+body {
+    background-color: #272727;
+}
+
+.board {
+    display: grid;
+    grid-auto-rows: 1fr;
+    width: 95vh;
+    height: 95vh;
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #bbada0;
+}
+
+/* Style the individual cells of the game board */
+.cell {
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    font-size: 60px;
+    border-radius: 10px;
+    background-color: #cdc1b4;
+    user-select: none;
+    cursor: default;
+    font-size: 3em;
+}
+
+.player-1 {
+    background-color: rgb(255, 112, 77);
+}
+
+.player-2 {
+    background-color: rgb(112, 112, 255);
+}
+
+.player-3 {
+    background-color: rgb(124, 255, 72);
+}
+
+.player-4 {
+    background-color: rgb(255, 217, 0);
+}

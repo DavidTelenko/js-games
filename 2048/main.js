@@ -42,16 +42,6 @@ class Board {
         this.data[i2] = tmp
     }
 
-    get(rowIndex, colIndex) {
-        const index = this.index(rowIndex, colIndex)
-        return this.data[index]
-    }
-
-    set(rowIndex, colIndex, value) {
-        const index = this.index(rowIndex, colIndex)
-        this.data[index] = value
-    }
-
     index(rowIndex, colIndex) {
         if (rowIndex < 0 || rowIndex >= this.size ||
             colIndex < 0 || colIndex >= this.size) {
@@ -121,7 +111,7 @@ let boardModel = new Board(size)
 boardModel.init()
 boardModel.update(boardView)
 
-document.addEventListener('keydown', function (event) {
+document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case "a":
         case "ArrowLeft":
